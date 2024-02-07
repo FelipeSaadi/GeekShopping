@@ -2,7 +2,6 @@
 using GeekShopping.ProductAPI.Data.ValueObjects;
 using GeekShopping.ProductAPI.Model;
 using GeekShopping.ProductAPI.Model.Context;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.EntityFrameworkCore;
 
 namespace GeekShopping.ProductAPI.Repository
@@ -33,19 +32,38 @@ namespace GeekShopping.ProductAPI.Repository
         }
 
 
-        public Task<ProductVO> Create(ProductVO vo)
+        public async Task<ProductVO> Create(ProductVO vo)
         {
-            throw new NotImplementedException();
+            Product product = _mapper.Map<Product>(vo);
+            _context.Products.Add(product);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ProductVO>(product);
         }
 
-        public Task<ProductVO> Update(ProductVO vo)
+        public async Task<ProductVO> Update(ProductVO vo)
         {
-            throw new NotImplementedException();
+            Product product = _mapper.Map<Product>(vo);
+            _context.Products.Update(product);
+            await _context.SaveChangesAsync();
+            return _mapper.Map<ProductVO>(product);
         }
 
-        public Task<bool> Delete(long id)
+        public async Task<bool> Delete(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                Product product = await _context.Products.Where(p => p.Id == id)
+                    .FirstOrDefaultAsync();
+                if (product == null) return false;
+                _context.Products.Remove(product);
+                await _context.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
+
+                return false;
+            }
         }
 
 
