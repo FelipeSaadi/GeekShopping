@@ -1,21 +1,38 @@
-﻿using GeekShopping.Web.Services.IService;
+﻿using GeekShopping.Web.Models;
+using GeekShopping.Web.Services.IService;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShopping.Web.Controllers
 {
-    public class ProductController : Controller
-    {
-        private readonly IProductService _productService;
+	public class ProductController : Controller
+	{
+		private readonly IProductService _productService;
 
-        public ProductController(IProductService productService)
-        {
-            _productService = productService ?? throw new ArgumentNullException(nameof(productService));
-        }
+		public ProductController(IProductService productService)
+		{
+			_productService = productService ?? throw new ArgumentNullException(nameof(productService));
+		}
 
-        public async Task<IActionResult> ProductIndex()
-        {
-            var products = await _productService.FindAllProducts();
-            return View(products);
-        }
-    }
+		public async Task<IActionResult> ProductIndex()
+		{
+			var products = await _productService.FindAllProducts();
+			return View(products);
+		}
+
+		public async Task<IActionResult> ProductCreate()
+		{
+			return View();
+		}
+
+		[HttpPost]
+		public async Task<IActionResult> ProductCreate(ProductModel product)
+		{
+			if (ModelState.IsValid)
+			{
+				var response = await _productService.CreateProduct(product);
+				if (response != null) return RedirectToAction("ProductIndex");
+			}
+			return View(product);
+		}
+	}
 }
