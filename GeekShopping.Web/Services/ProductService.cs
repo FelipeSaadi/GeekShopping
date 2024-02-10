@@ -1,6 +1,7 @@
 ﻿using GeekShopping.Web.Models;
 using GeekShopping.Web.Services.IService;
 using GeekShopping.Web.Utils;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GeekShopping.Web.Services
 {
@@ -26,7 +27,7 @@ namespace GeekShopping.Web.Services
             return await response.ReadContentAs<ProductModel>();
         }
 
-        public async Task<ProductModel> CreateProduct(ProductModel product)
+        public async Task<ProductModel> CreateProduct([FromBody] ProductModel product)
         {
             var response = await _client.PostAsJson(BasePath, product);
             if (response.IsSuccessStatusCode)
@@ -39,7 +40,7 @@ namespace GeekShopping.Web.Services
             }
         }
 
-        public async Task<ProductModel> UpdateProduct(ProductModel product)
+        public async Task<ProductModel> UpdateProduct([FromBody] ProductModel product)
         {
             var response = await _client.PutAsJson(BasePath, product);
             if (response.IsSuccessStatusCode)
