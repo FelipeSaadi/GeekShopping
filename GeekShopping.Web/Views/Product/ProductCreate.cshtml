@@ -1,0 +1,75 @@
+﻿@model GeekShopping.Web.Models.ProductModel
+
+<form asp-action="ProductCreate">
+	<div class="container p-3">
+		<h1>Create Product</h1>
+	</div>
+	<div class="row">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="col-2">
+			<label class="control-label pt-2" style="font-size=20px;" asp-for="Name"></label>
+		</div>
+		<div class="col-10 pb-3">
+			<input class="form-control" asp-for="Name"/>
+			<span class="text-danger" asp-validation-for="Name"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="col-2">
+			<label class="control-label pt-2" style="font-size=20px;" asp-for="Description"></label>
+		</div>
+		<div class="col-10 pb-3">
+			<input class="form-control" asp-for="Description" />
+			<span class="text-danger" asp-validation-for="Description"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="col-2">
+			<label class="control-label pt-2" style="font-size=20px;" asp-for="Price"></label>
+		</div>
+		<div class="col-10 pb-3">
+			<input class="form-control" asp-for="Price" />
+			<span class="text-danger" asp-validation-for="Price"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="col-2">
+			<label class="control-label pt-2" style="font-size=20px;" asp-for="CategoryName"></label>
+		</div>
+		<div class="col-10 pb-3">
+			<input class="form-control" asp-for="CategoryName" />
+			<span class="text-danger" asp-validation-for="CategoryName"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<div class="col-2">
+			<label class="control-label pt-2" style="font-size=20px;" asp-for="ImageUrl"></label>
+		</div>
+		<div class="col-10 pb-3">
+			<input class="form-control" asp-for="ImageUrl" />
+			<span class="text-danger" asp-validation-for="ImageUrl"></span>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-5 offset-2 border">
+			<a class="btn btn-secundary form-control" asp-action="ProductIndex">Back to list</a>
+		</div>
+
+		<div class="col-5">
+			<div class="btn btn-primary form-control" type="submit">Create</div>
+		</div>
+	</div>
+</form>
+
+@section Scripts {
+	<partial name="_ValidationScriptsPartial"></partial>
+}
