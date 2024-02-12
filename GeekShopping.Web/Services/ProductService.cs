@@ -53,17 +53,20 @@ namespace GeekShopping.Web.Services
             }
         }
 
-        public async Task<bool> DeleteProduct(long id)
+        public async Task<bool> DeleteProduct([FromBody] long id)
         {
-            var response = await _client.DeleteAsync($"{BasePath}/{id}");
-            if(response.IsSuccessStatusCode)
-            {
-                return await response.ReadContentAs<bool>();
-            }
-            else
-            {
-                throw new Exception("Algo deu errado");
-            }
+            
+				var response = await _client.DeleteAsync($"{BasePath}?id={id}");
+				if (response.IsSuccessStatusCode)
+				{
+					//return await response.ReadContentAs<bool>();
+					return true;
+				}
+				else
+				{
+					//throw new Exception($"Algo deu errado, {response.ReasonPhrase}");
+					return false;
+				}    
         }
     }
 }

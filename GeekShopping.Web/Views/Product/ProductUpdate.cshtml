@@ -1,10 +1,11 @@
 ﻿@model GeekShopping.Web.Models.ProductModel
 
-<form asp-action="ProductCreate">
+<form asp-action="ProductUpdate">
 	<div class="container p-3">
-		<h1>Create Product</h1>
+		<h1>Update Product</h1>
 	</div>
 	<div class="row">
+		<input asp-for="Id" hidden/>
 		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="col-2">
 			<label class="control-label pt-2" asp-for="Name"></label>
@@ -65,7 +66,7 @@
 		</div>
 
 		<div class="col-5">
-			<input class="btn btn-primary form-control" type="submit" value="Create"/>
+			<input class="btn btn-primary form-control" type="submit" value="Update"/>
 		</div>
 	</div>
 </form>

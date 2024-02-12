@@ -42,7 +42,7 @@ namespace GeekShopping.Web.Utils
             var content = new StringContent(dataAsString);
             content.Headers.ContentType = contentType;
 
-            return httpClient.PostAsync(url, content);
+            return httpClient.PutAsync(url, content);
         }
-    }
+	}
 }

@@ -1,60 +1,56 @@
 ﻿@model GeekShopping.Web.Models.ProductModel
 
-<form asp-action="ProductCreate">
+<form asp-action="ProductDelete">
 	<div class="container p-3">
 		<h1>Create Product</h1>
 	</div>
 	<div class="row">
-		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
+		<input asp-for="Id" hidden/>
 		<div class="col-2">
-			<label class="control-label pt-2" asp-for="Name"></label>
+			<label class="control-label pt-2"  asp-for="Name"></label>
 		</div>
 		<div class="col-10 pb-3">
-			<input class="form-control" asp-for="Name"/>
+			<input class="form-control" asp-for="Name" disabled />
 			<span class="text-danger" asp-validation-for="Name"></span>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="col-2">
-			<label class="control-label pt-2" asp-for="Description"></label>
+			<label class="control-label pt-2"  asp-for="Description"></label>
 		</div>
 		<div class="col-10 pb-3">
-			<textarea class="form-control" asp-for="Description"></textarea>
+			<textarea class="form-control" asp-for="Description" disabled ></textarea>
 			<span class="text-danger" asp-validation-for="Description"></span>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="col-2">
-			<label class="control-label pt-2" asp-for="Price"></label>
+			<label class="control-label pt-2"  asp-for="Price" ></label>
 		</div>
 		<div class="col-10 pb-3">
-			<input class="form-control" asp-for="Price" />
-			<span class="text-danger" asp-validation-for="Price"></span>
+			<input class="form-control" asp-for="Price" disabled />
+			<span class="text-danger" asp-validation-for="Price" ></span>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="col-2">
-			<label class="control-label pt-2" asp-for="CategoryName">Category</label>
+			<label class="control-label pt-2"  asp-for="CategoryName">Category</label>
 		</div>
 		<div class="col-10 pb-3">
-			<input class="form-control" asp-for="CategoryName" />
+			<input class="form-control" asp-for="CategoryName" disabled />
 			<span class="text-danger" asp-validation-for="CategoryName"></span>
 		</div>
 	</div>
 
 	<div class="row">
-		<div class="text-danger" asp-validation-summary="ModelOnly"></div>
 		<div class="col-2">
-			<label class="control-label pt-2" asp-for="ImageUrl"></label>
+			<label class="control-label pt-2"  asp-for="ImageUrl"></label>
 		</div>
 		<div class="col-10 pb-3">
-			<input class="form-control" asp-for="ImageUrl" />
+			<input class="form-control" asp-for="ImageUrl" disabled />
 			<span class="text-danger" asp-validation-for="ImageUrl"></span>
 		</div>
 	</div>
@@ -65,7 +61,7 @@
 		</div>
 
 		<div class="col-5">
-			<input class="btn btn-primary form-control" type="submit" value="Create"/>
+			<input class="btn btn-danger form-control" type="submit" value="Delete" />
 		</div>
 	</div>
 </form>
